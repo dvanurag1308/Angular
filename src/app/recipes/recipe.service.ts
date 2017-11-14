@@ -1,4 +1,5 @@
 import { Recipe } from "./recipe.model";
+import { EventEmitter } from "@angular/core";
 
 export class RecipeService {
     
@@ -7,6 +8,8 @@ export class RecipeService {
         new Recipe('Burger', 'Making Burger', 'http://intimesoft.com/wp-content/uploads/2017/01/fast-food.jpg')
       ];
       
+    selectedRecipe = new EventEmitter<Recipe>();
+
     getRecipes() {
         return this.recipes.slice();
     }
