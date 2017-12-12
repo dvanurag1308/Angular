@@ -1,4 +1,5 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component} from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
     selector: 'app-header',
@@ -6,9 +7,9 @@ import { Component, EventEmitter, Output } from '@angular/core';
 })
 export class HeaderComponent{
 
-   @Output() featureSelected = new EventEmitter<string>();
+   constructor(private route: ActivatedRoute, private router: Router) {}
 
     onSelect(feature: string){
-        this.featureSelected.emit(feature);
+        // this.router.navigate(['/',feature])
     }
 }

@@ -1,4 +1,8 @@
-<a href="#" class="list-group-item clearfix spaceBottom" (click)="recipeClicked()">
+<a 
+  [routerLink] = "[id]"
+  style="cursor: pointer"
+  routerLinkActive="active" 
+  class="list-group-item clearfix spaceBottom">
   <div class="pull-left">
     <h4 class="list-group-item-heading">{{ recipe.name }}</h4>
     <p class="list-group-item-text">{{recipe.description}}</p>

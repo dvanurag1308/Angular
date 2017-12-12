@@ -1,5 +1,5 @@
 import { Recipe } from './recipe.model';
-import { EventEmitter, Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Ingredient } from '../shared/ingredient.model';
 import { ShoppingListService } from '../shopping-list/shoppingList.service';
 import { element } from 'protractor';
@@ -27,10 +27,12 @@ export class RecipeService {
                     ])
       ];
 
-    selectedRecipe = new EventEmitter<Recipe>();
-
     getRecipes() {
         return this.recipes.slice();
+    }
+
+    getRecipe(id: number): Recipe {
+        return this.recipes[id];
     }
 
     addIngredientsToShoppingList(ingredients: Ingredient[]) {
