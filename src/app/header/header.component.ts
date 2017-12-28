@@ -1,15 +1,24 @@
 import { Component} from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import {DataStorageService} from '../shared/data-storage.service';
+import {Response} from '@angular/http';
 
 @Component({
     selector: 'app-header',
     templateUrl: './header.component.html'
 })
-export class HeaderComponent{
+export class HeaderComponent {
 
-   constructor(private route: ActivatedRoute, private router: Router) {}
+   constructor(private route: ActivatedRoute, private router: Router, private dataStorageService: DataStorageService) {}
 
-    onSelect(feature: string){
+    onSelect(feature: string) {
         // this.router.navigate(['/',feature])
+    }
+
+    onSave() {
+     this.dataStorageService.storeRecipes()
+       .subscribe((response: Response) => {
+       console.log(response);
+       });
     }
 }
