@@ -2,6 +2,7 @@ import { Component} from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import {DataStorageService} from '../shared/data-storage.service';
 import {Response} from '@angular/http';
+import {RecipeService} from '../recipes/recipe.service';
 
 @Component({
     selector: 'app-header',
@@ -20,5 +21,9 @@ export class HeaderComponent {
        .subscribe((response: Response) => {
        console.log(response);
        });
+    }
+
+    onFetch() {
+     this.dataStorageService.fetchRecipes();
     }
 }

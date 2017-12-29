@@ -10,23 +10,7 @@ export class RecipeService {
     recipeAdded = new Subject<Recipe[]>();
     constructor(private shoppingListService: ShoppingListService) {}
 
-    private recipes: Recipe[] = [
-        new Recipe('Pasta',
-                    'Making pasta',
-                    'http://images.indianexpress.com/2015/05/macaroni-main.jpg',
-                    [
-                        new Ingredient('Cheese', 1),
-                        new Ingredient('Macroons', 2)
-                    ]),
-        new Recipe('Burger',
-                    'Making Burger',
-                    'http://intimesoft.com/wp-content/uploads/2017/01/fast-food.jpg',
-                    [
-                        new Ingredient('Chicken', 1),
-                        new Ingredient('Tomatoes', 2),
-                        new Ingredient('Bread', 2)
-                    ])
-      ];
+    private recipes: Recipe[] = [];
 
     getRecipes() {
         return this.recipes.slice();
@@ -52,6 +36,11 @@ export class RecipeService {
 
     deleteRecipe(index: number) {
       this.recipes.splice(index, 1);
+      this.recipeAdded.next(this.recipes.slice());
+    }
+
+    initializeRecipes(recipes: Recipe[]) {
+      this.recipes = recipes;
       this.recipeAdded.next(this.recipes.slice());
     }
 }
