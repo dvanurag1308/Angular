@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import {DataStorageService} from '../shared/data-storage.service';
 import {Response} from '@angular/http';
 import {RecipeService} from '../recipes/recipe.service';
+import {AuthService} from '../auth/auth.service';
 
 @Component({
     selector: 'app-header',
@@ -10,7 +11,10 @@ import {RecipeService} from '../recipes/recipe.service';
 })
 export class HeaderComponent {
 
-   constructor(private route: ActivatedRoute, private router: Router, private dataStorageService: DataStorageService) {}
+   constructor(private route: ActivatedRoute,
+               private router: Router,
+               private dataStorageService: DataStorageService,
+               private authService: AuthService) {}
 
     onSelect(feature: string) {
         // this.router.navigate(['/',feature])
@@ -25,5 +29,10 @@ export class HeaderComponent {
 
     onFetch() {
      this.dataStorageService.fetchRecipes();
+    }
+
+    onLogout() {
+     this.authService.logOut();
+     this.router.navigate(['/']);
     }
 }
