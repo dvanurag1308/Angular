@@ -8,10 +8,12 @@ import {AuthService} from '../auth/auth.service';
 
 @Injectable()
 export class DataStorageService {
-  constructor(private httpClient: HttpClient, private recipeService: RecipeService, private authService: AuthService) {}
+  constructor(private httpClient: HttpClient,
+              private recipeService: RecipeService,
+              private authService: AuthService) {}
 
   storeRecipes() {
-    const token = this.authService.getToken();
+    // const token = this.authService.getToken();
     // const headers = new HttpHeaders().set('Authorization', 'ds').append('', '');
     // return this.httpClient.put('https://ng-recipe-book-d8963.firebaseio.com/recipes.json', this.recipeService.getRecipes(), {
     //   observe: 'body',
@@ -28,7 +30,7 @@ export class DataStorageService {
   }
 
   fetchRecipes() {
-    const token = this.authService.getToken();
+    // const token = this.authService.getToken();
     // this.httpClient.get<Recipe[]>('https://ng-recipe-book-d8963.firebaseio.com/recipes.json?auth=' + token)
     // this.httpClient.get<Recipe[]>('https://ng-recipe-book-d8963.firebaseio.com/recipes.json?auth=' + token, {
     this.httpClient.get<Recipe[]>('https://ng-recipe-book-d8963.firebaseio.com/recipes.json?', {
