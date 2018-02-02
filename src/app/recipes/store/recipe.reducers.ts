@@ -2,7 +2,7 @@ import {Recipe} from '../recipe.model';
 import * as fromRecipeAction from './recipe.actions';
 import * as fromApp from '../../store/app.reducers';
 
-export interface RecipeState extends fromApp.AppState{
+export interface RecipeState extends fromApp.AppState {
   recipes: State;
 }
 
@@ -36,12 +36,13 @@ export function recipeReducer(state: State = initialState, action: fromRecipeAct
       };
     }
     case fromRecipeAction.DELETE_RECIPE: {
+      const recipesAfterDeleting = state.recipes.splice(action.index, 1);
       return {
         ...state,
-        recipes: state.recipes.splice(action.index, 1)
+        recipes: recipesAfterDeleting
       };
     }
-    case fromRecipeAction.INITIALIZE_RECIPES: {
+    case fromRecipeAction.SET_RECIPES: {
       return {
         ...state,
         recipes: [...action.recipes]

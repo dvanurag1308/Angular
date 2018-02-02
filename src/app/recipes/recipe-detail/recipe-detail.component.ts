@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Params, Router} from '@angular/router';
 import {Store} from '@ngrx/store';
+import 'rxjs/add/operator/take';
 
 import * as shoppingListActions from '../../shopping-list/store/shopping-list.actions';
 import {Observable} from 'rxjs/Observable';

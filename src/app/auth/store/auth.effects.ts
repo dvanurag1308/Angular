@@ -52,6 +52,7 @@ export class AuthEffects {
       return fromPromise(firebase.auth().currentUser.getIdToken());
     })
     .mergeMap((token: string) => {
+      console.log(token);
       this.router.navigate(['/recipes']);
       return [
         new fromAuthActions.SignIn(),
